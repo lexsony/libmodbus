@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: LGPL-2.1-or-later
  */
 
+#if !defined __arm__
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <errno.h>
@@ -1303,3 +1305,5 @@ modbus_t* modbus_new_rtu(const char *device,
 
     return ctx;
 }
+
+#endif
