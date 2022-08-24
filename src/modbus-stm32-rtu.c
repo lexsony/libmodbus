@@ -251,6 +251,11 @@ static int _modbus_rtu_check_integrity(modbus_t *ctx, uint8_t *msg,
 /* Sets up a serial port for RTU communications */
 static int _modbus_rtu_connect(modbus_t *ctx)
 {
+    modbus_rtu_t *ctx_rtu;
+    ctx_rtu = (modbus_rtu_t *)ctx->backend_data;
+    int fd = open(ctx_rtu->device, 0);
+    if (fd == -1) return -1;
+    ctx->s = fd;
     return 0;
 }
 
